@@ -11,7 +11,7 @@
 <body>
 
 	<section>
-		<h2>메인화면</h2>
+		<h2>로그인</h2>
 		
 	</section>
 </body>

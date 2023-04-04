@@ -9,10 +9,7 @@
 </head>
 <jsp:include page="header"></jsp:include>
 <body>
-
-	<section>
-		<h2>메인화면</h2>
-		
+	
 	</section>
 </body>
 <jsp:include page="footer"></jsp:include>
