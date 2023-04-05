@@ -12,7 +12,8 @@
 
 	<section>
 		<h2>로그인</h2>
-		<form method="POST" action="../LoginAction">
+		<form method="POST" action="../service">
+		<input type = "hidden" name="command" value="login">
 			<table>
 				<tr>
 					<td class="kind">아이디</td>
@@ -27,7 +28,7 @@
 			<input type="submit" value="로그인">
 		</form>
 	</section>
-	<script src="../resources/loginCheck.js"></script>
+	<script src="../resources/logCheck.js"></script>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>

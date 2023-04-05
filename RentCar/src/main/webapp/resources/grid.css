@@ -13,14 +13,35 @@ body {
 
 header {
 	color: white;
-	background-color: yellow;
+	background-color: green;
 }
 
 nav {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	background-color: green;
+	background-color: orange;
+}
+
+.title {
+	color : orange;
+	font-weight : bold;
+	text-align : center;
+}
+
+.content {
+	text-align : center;
+	height : 50vh;
+}
+
+.title-text {
+	font-weight : bold;
+	height : 5vh;
+}
+
+img {
+	width : auto;
+	height : 200px;
 }
 
 setion {
@@ -28,7 +49,7 @@ setion {
 }
 
 footer {
-	background-color: green;
+	background-color: orange;
 	color: white;
 }
 
@@ -60,8 +81,8 @@ footer>p {
 
 table {
 	margin: 20px auto;
-	border: 1px solid yellow;
-	border-collapse: collapse;
+	border: 2px solid grey;
+	border-style: ridge;
 }
 
 th, td {

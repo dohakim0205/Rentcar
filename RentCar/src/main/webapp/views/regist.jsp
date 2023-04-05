@@ -10,6 +10,11 @@
 <body>
 
 	<%
+	if(session.getAttribute("log") != null) {
+		session.removeAttribute("log");
+	}
+	
+	
 	ClientDao clientDao = ClientDao.getInstance();
 
 	String id = request.getParameter("id");
@@ -19,7 +24,8 @@
 
 	<section>
 		<h2>회원등록</h2>
-		<form method="POST" action="../RegistAction">
+		<form method="POST" action="../service">
+			<input type = "hidden" name="command" value="regist">
 			<table border="1">
 				<tr>
 					<th>아이디</th>

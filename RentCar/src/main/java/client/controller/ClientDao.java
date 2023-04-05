@@ -27,7 +27,7 @@ public class ClientDao {
 	public void createClient (ClientRequestDto clientDto) {
 		Client client = new Client(clientDto);
 
-		this.conn = DBManager.getConnection();
+		this.conn = DBManager.getConnectionFromMySQL();
 		if (this.conn != null) {
 			String sql = "INSERT INTO Client VALUES(?, ?, ?, ?);";
 
@@ -48,7 +48,7 @@ public class ClientDao {
 	
 	public ArrayList<Client> getClientAll() {
 		ArrayList<Client> list = new ArrayList<Client>();
-		this.conn = DBManager.getConnection();
+		this.conn = DBManager.getConnectionFromMySQL();
 		if (this.conn != null) {
 			String sql = "SELECT * FROM client ORDER BY regist_date";
 
@@ -76,7 +76,7 @@ public class ClientDao {
 
 	public Client getClientById(String id) {
 		Client client = null;
-		this.conn = DBManager.getConnection();
+		this.conn = DBManager.getConnectionFromMySQL();
 		if (this.conn != null) {
 			String sql = "SELECT * FROM client WHERE client_id=?";
 
@@ -105,15 +105,14 @@ public class ClientDao {
 	public void updateClient(ClientRequestDto clientDto) {
 		Client client = new Client(clientDto);
 
-		this.conn = DBManager.getConnection();
+		this.conn = DBManager.getConnectionFromMySQL();
 		if (this.conn != null && client != null) {
-			String sql = "UPDATE client SET client_pw=?, client_name=?, regist_date=? WHERE client_id=?";
+			String sql = "UPDATE client SET client_pw=?, client_name=? WHERE client_id=?";
 			try {
 				this.pstmt = conn.prepareStatement(sql);
 				this.pstmt.setString(1, client.getPw());
 				this.pstmt.setString(2, client.getName());
-				this.pstmt.setTimestamp(3, client.getRegistDate());
-				this.pstmt.setString(1, client.getId());
+				this.pstmt.setString(3, client.getId());
 				this.pstmt.execute();
 				
 			} catch (Exception e) {

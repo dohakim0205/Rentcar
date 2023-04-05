@@ -14,6 +14,12 @@ public class ClientRequestDto {
 		this.name = name;
 		this.registDate = registDate;
 	}
+	
+	public ClientRequestDto(String id, String pw, String name) {
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+	}
 
 	public String getId() {
 		return id;

@@ -11,15 +11,17 @@
 <body>
 	<%
 	Client client = (Client) session.getAttribute("log");
-
 	if(client == null){
-	response.sendRedirect("login");	
+	System.out.println("hi");
+	response.sendRedirect("login");
 	}
+	
+	else {
 	%>
 
 	<section>
 		<h2>회원 정보</h2>
-	<table>
+		<table>
 			<tr>
 				<td class="kind">아이디</td>
 				<td><%=client.getId()%></td>
@@ -33,8 +35,11 @@
 				<td><%=client.getRegistDate()%></td>
 			</tr>
 		</table>
-		<button onclick = "update">회원 정보 수정</button>
+		<button onclick= "location.href = 'update'">회원 정보 수정</button>
 	</section>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>
+<%
+	}
+%>
