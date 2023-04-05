@@ -22,10 +22,10 @@ public class DBManager {
 			DataSource source = (DataSource) init.lookup("java:comp/env/jdbc/rent_car");
 			conn = source.getConnection();
 
-			System.out.println("mysql DB 연동 성공");
+			System.out.println("돌고래 DB 연동 성공");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("mysql DB 연동 실패");
+			System.out.println("돌고래 DB 연동 실패");
 		}
 
 		return conn;

@@ -35,8 +35,9 @@
 			Vehicle car = list.get(i);
 		%>
 		<tr>
-			<td><a href="booking?vehicleId=<%=car.getVehicleId()%>"><img src="../resources/images/car<%=i+1%>.png"></img></a></td>
-			<td><a href="booking?vehicleId=<%=car.getVehicleId()%>"><%=car.getVehicleId()%></a></td>
+			<td><a href="carDetail?vehicleId=<%=car.getVehicleId()%>&imgSrc=../resources/images/car<%=i+1%>.png">
+			<img src="../resources/images/car<%=i+1%>.png"></img></a></td>
+			<td><a href="carDetail?vehicleId=<%=car.getVehicleId()%>"><%=car.getVehicleId()%></a></td>
 			<td><%=car.getVehicleName()%></td>
 			<td><%=car.getVehicleLocation()%></td>
 			<td><%=car.getPricePerDay()%>0000원</td>

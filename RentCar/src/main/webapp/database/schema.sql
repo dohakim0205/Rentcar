@@ -18,4 +18,4 @@ INSERT INTO Client (client_id, client_pw, client_name, regist_date) VALUES('asdf
 
 INSERT INTO Board (board_num, board_type, client_id, title, content) VALUES(1, '문의', 'asdf1234', '붕붕카 가격 문의', '붕붕카가 왜 범퍼카보다 비싼가요?');
 
-INSERT INTO Booking (booking_num, booking_type, vehicle_id, client_id, booking_time, rent_day, payment) VALUES(1, 'L', 'CAR001', 'asdf1234', TO_DATE('2024-01-01', 'YYYY-MM-DD', 10, 1000);
+INSERT INTO Booking (booking_num, booking_type, vehicle_id, client_id, booking_time, rent_day, payment) VALUES(1, 'L', 'CAR001', 'asdf1234', date_format('2024-01-01 12:00', '%y-%m-%d %H:%i'), 10, 1000);

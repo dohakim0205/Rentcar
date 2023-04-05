@@ -89,6 +89,16 @@
 		<url-pattern>/booking</url-pattern>
 	</servlet-mapping>
 	
+		<servlet>
+		<servlet-name>carDetail</servlet-name>
+		<jsp-file>/views/carDetail.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>carDetail</servlet-name>
+		<url-pattern>/carDetail</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>list</servlet-name>
 		<jsp-file>/views/list.jsp</jsp-file>
@@ -117,5 +127,16 @@
 	<servlet-mapping>
 		<servlet-name>update</servlet-name>
 		<url-pattern>/update</url-pattern>
+	</servlet-mapping>
+	
+		
+	<servlet>
+		<servlet-name>pay</servlet-name>
+		<jsp-file>/views/pay.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>pay</servlet-name>
+		<url-pattern>/pay</url-pattern>
 	</servlet-mapping>
 </web-app>

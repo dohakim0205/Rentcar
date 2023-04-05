@@ -1,6 +1,7 @@
 package controller;
 
 import controller.action.Action;
+import controller.action.BookingAction;
 import controller.action.LoginAction;
 import controller.action.RegistAction;
 import controller.action.UpdateAction;
@@ -30,6 +31,10 @@ public class ActionFactory {
 		
 		else if (command.equals("login")) {
 			action = new LoginAction();
+		}
+		
+		else if(command.equals("booking")) {
+			action = new BookingAction();
 		}
 		return action;
 	}

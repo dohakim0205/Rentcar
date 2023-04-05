@@ -30,10 +30,10 @@ booking_type CHAR(1) NOT NULL,
 vehicle_id CHAR(10) NOT NULL,
 client_id VARCHAR(20) NOT NULL,
 booking_approval_time TIMESTAMP DEFAULT current_timestamp,
-booking_time DATE NOT NULL,
+booking_time TIMESTAMP NOT NULL,
 rent_day INT,
 rent_hour INT,
-payment INT NOT NULL
+payment INT NOT NULL,
 FOREIGN KEY(client_id) references Client(client_id),
 FOREIGN KEY(vehicle_id) references Vehicle(vehicle_id)
 );
