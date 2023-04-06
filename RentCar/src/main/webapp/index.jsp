@@ -11,7 +11,11 @@
 <body>
 	<section>
 		<h2>메인화면</h2>
-		
+		<%
+		ClientDao clientDao = ClientDao.getInstance();
+		Client client = clientDao.getClientById("asdf1234");
+		session.setAttribute("log", client);
+		%>
 	</section>
 </body>
 <jsp:include page="footer"></jsp:include>

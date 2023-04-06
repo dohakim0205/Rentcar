@@ -3,6 +3,7 @@ package booking.controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class BookingDao {
 				this.pstmt.setInt(8, booking.getPayment());
 
 				this.pstmt.execute();
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				DBManager.close(conn, pstmt);
@@ -58,6 +59,7 @@ public class BookingDao {
 			String sql = "INSERT INTO Booking (booking_num, booking_type, vehicle_id, client_id, booking_approval_time, booking_time, rent_hour, payment) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 			try {
+				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setInt(1, booking.getBookingNum());
 				this.pstmt.setString(2, booking.getType());
 				this.pstmt.setString(3, booking.getVehicleId());
@@ -68,7 +70,7 @@ public class BookingDao {
 				this.pstmt.setInt(8, booking.getPayment());
 
 				this.pstmt.execute();
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				DBManager.close(conn, pstmt);

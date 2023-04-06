@@ -1,7 +1,5 @@
 <%@page import="vehicle.controller.VehicleDao"%>
 <%@page import="vehicle.Vehicle"%>
-<%@page import="client.Client"%>
-<%@page import="client.controller.ClientDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,14 +18,23 @@
 	String bookingTime = request.getParameter("bookingTime");
 	String rentDay = request.getParameter("rentDay");
 	String rentHour = request.getParameter("rentHour");
-	
+
 	VehicleDao vehicleDao = VehicleDao.getInstance();
-	Vehicle vehicle = vehicleDao.getVehicleById(vehicleId); 
-	int payment = type.equals("L") ? vehicle.getPricePerDay() * Integer.parseInt(rentDay) : vehicle.getPricePerHour() * Integer.parseInt(rentHour); 
+	Vehicle vehicle = vehicleDao.getVehicleById(vehicleId);
+	
+	int payment = 0;
+	if(type.equals("L")){
+		payment = vehicle.getPricePerDay() * Integer.parseInt(rentDay);
+	}
+	
+	else {
+		payment = vehicle.getPricePerHour() * Integer.parseInt(rentHour);
+	}
+	
 	%>
 	<section>
 		<h2>예약확인/결제</h2>
-		<form method="POST" action="pay">
+		<form method="POST" action="../service">
 			<input type="hidden" name="command" value="booking">
 			<table>
 				<tr>
@@ -54,7 +61,7 @@
 					<td>예약 날짜 및 시간</td>
 					<td><input type="date" id="bookingDate" name="bookingDate"
 						value="<%=bookingDate%>" readonly></td>
-					<td><input type="date" id="bookingTime" name="bookingTime"
+					<td><input type="time" id="bookingTime" name="bookingTime"
 						value="<%=bookingTime%>" readonly></td>
 				</tr>
 
@@ -68,7 +75,7 @@
 				</tr>
 				<%
 				}
-				if (rentDay != "") {
+				if (rentHour != "") {
 				%>
 				<tr>
 					<td>이용 시간(단기 렌트)</td>
@@ -84,8 +91,8 @@
 						value="<%=payment%>" readonly>0000원</td>
 				</tr>
 			</table>
-			<input type="submit" value="결제"> <input type="button"
-				value="취소" onclick="location.href='/'">
+			<input type="submit" value="결제">
+			<input type="button" value="취소" onclick="location.href='/'">
 		</form>
 	</section>
 </body>

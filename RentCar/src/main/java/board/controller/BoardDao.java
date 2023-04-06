@@ -24,7 +24,7 @@ public class BoardDao {
 		return instance;
 	}
 
-	public void createClient(BoardRequestDto boardDto) {
+	public void createBoard(BoardRequestDto boardDto) {
 		Board board = new Board(boardDto);
 
 		this.conn = DBManager.getConnectionFromMySQL();
@@ -78,7 +78,7 @@ public class BoardDao {
 		}
 		return list;
 	}
-	
+
 	public Board getBoardByBoardNum(int boardNum) {
 		Board board = null;
 		this.conn = DBManager.getConnectionFromMySQL();
@@ -162,5 +162,26 @@ public class BoardDao {
 				DBManager.close(conn, pstmt);
 			}
 		}
+	}
+
+	public int getBoardNumMax() {
+		int boardNum = -1;
+		this.conn = DBManager.getConnectionFromMySQL();
+		if (this.conn != null) {
+			String sql = "SELECT MAX(board_num) as max_num FROM Board";
+
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+
+				this.rs.next();
+				boardNum = this.rs.getInt(1) + 1;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+		}
+		return boardNum;
 	}
 }

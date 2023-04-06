@@ -1,5 +1,3 @@
-<%@page import="client.Client"%>
-<%@page import="client.controller.ClientDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,7 +26,7 @@
 			<input type="submit" value="로그인">
 		</form>
 	</section>
-	<script src="../resources/logCheck.js"></script>
+	<script src="../resources/logCheck.js" charset="UTF-8"></script>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>

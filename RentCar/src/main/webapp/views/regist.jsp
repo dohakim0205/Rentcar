@@ -50,7 +50,7 @@
 		</form>
 	</section>
 
-	<script src="../resources/validation.js"></script>
+	<script src="../resources/validation.js" charset="UTF-8"></script>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>

@@ -19,9 +19,16 @@
 	Client client = (Client) session.getAttribute("log");
 
 	if (client != null) {
+
+		if (vehicleId == null) {
+			vehicleId = request.getParameter("vehicleId");
+		}
+
 		String bookingDate = request.getParameter("bookingDate");
 		String bookingTime = request.getParameter("bookingTime");
 		String type = request.getParameter("type");
+		String rentDay = request.getParameter("rentDay");
+		String rentHour = request.getParameter("rentHour");
 	%>
 	<section>
 		<h2>예약화면</h2>
@@ -57,21 +64,24 @@
 					<td>예약 날짜 및 시간</td>
 					<td><input type="date" id="bookingDate" name="bookingDate"
 						value="<%=bookingDate == null ? "" : bookingDate%>"></td>
-						<td><input type="time" id="bookingTime" name="bookingTime"
+					<td><input type="time" id="bookingTime" name="bookingTime"
 						value="<%=bookingTime == null ? "" : bookingTime%>"></td>
 				</tr>
 				<tr>
 					<td>이용 일수(장기 렌트시에만 기재)</td>
-					<td><input type="number" id="rentDay" name="rentDay"></td>
+					<td><input type="number" id="rentDay" name="rentDay"
+						value="<%=rentDay == null ? "" : rentDay%>"></td>
 
 					<td>이용 시간(단기 렌트시에만 기재)</td>
-					<td><input type="number" id="rentHour" name="rentHour"></td>
+					<td><input type="number" id="rentHour" name="rentHour"
+						value="<%=rentHour == null ? "" : rentHour%>"></td>
 				</tr>
 			</table>
 			<input type="button" value="다음으로" onclick="checkBookingValues(form)">
 		</form>
 	</section>
-	<script src="../resources/bookingValidation.js"></script>
+	<script type="text/javascript" src="../resources/bookingValidation.js"
+		charset="UTF-8"></script>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>

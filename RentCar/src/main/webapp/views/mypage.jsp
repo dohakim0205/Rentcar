@@ -1,3 +1,8 @@
+<%@page import="vehicle.Vehicle"%>
+<%@page import="vehicle.controller.VehicleDao"%>
+<%@page import="booking.Booking"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="booking.controller.BookingDao"%>
 <%@page import="client.Client"%>
 <%@page import="client.controller.ClientDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,14 +16,14 @@
 <body>
 	<%
 	Client client = (Client) session.getAttribute("log");
-	if(client == null){
-	System.out.println("hi");
-	response.sendRedirect("login");
+	if (client == null) {
+		response.sendRedirect("login");
 	}
-	
-	else {
-	%>
 
+	else {
+		BookingDao bookingDao = BookingDao.getInstance();
+		ArrayList<Booking> list = bookingDao.getBookingByClientId(client.getId());
+	%>
 	<section>
 		<h2>회원 정보</h2>
 		<table>
@@ -35,11 +40,39 @@
 				<td><%=client.getRegistDate()%></td>
 			</tr>
 		</table>
-		<button onclick= "location.href = 'update'">회원 정보 수정</button>
+		<table>
+			<tr>
+				<td colspan="6"><a href="bookingList">예약 정보</a></td>
+			</tr>
+			<%
+			for (int i = 0; i < list.size(); i++) {
+				Booking booking = list.get(i);
+				VehicleDao vehicleDao = VehicleDao.getInstance();
+				Vehicle vehicle = vehicleDao.getVehicleById(booking.getVehicleId());
+				String time = booking.getBookingTime().toString().substring(0, 16);
+			%>
+			<tr>
+
+				<td>예약번호</td>
+				<td><a
+					href="bookingList?bookingNum=<%=booking.getBookingNum()%>&vehicleName=<%=vehicle.getVehicleName()%>&time=<%=time%>"><%=booking.getBookingNum()%></a></td>
+				<td>차량이름</td>
+				<td><a
+					href="bookingList?bookingNum=<%=booking.getBookingNum()%>&vehicleName=<%=vehicle.getVehicleName()%>&time=<%=time%>"><%=vehicle.getVehicleName()%></a></td>
+				<td>예약 날짜 및 시간</td>
+				<td><a
+					href="bookingList?bookingNum=<%=booking.getBookingNum()%>&vehicleName=<%=vehicle.getVehicleName()%>&time=<%=time%>"><%=time%></a></td>
+
+			</tr>
+			<%
+			}
+			%>
+		</table>
+		<button onclick="location.href = 'update'">회원 정보 수정</button>
 	</section>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>
 <%
-	}
+}
 %>

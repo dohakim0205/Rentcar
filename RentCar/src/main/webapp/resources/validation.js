@@ -1,5 +1,5 @@
 function checkValues(htmlForm) {
-	let url = "regist.jsp?&";
+	let url = "regist?&";
 
 	const id = document.getElementById("id").value;
 	const pw = document.getElementById("pw").value;

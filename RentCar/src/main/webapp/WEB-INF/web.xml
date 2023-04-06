@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>RentCar</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
-  <servlet>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>RentCar</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+	<servlet>
 		<servlet-name>Service</servlet-name>
 		<servlet-class>controller.Service</servlet-class>
 	</servlet>
@@ -38,7 +41,7 @@
 		<servlet-name>footer</servlet-name>
 		<url-pattern>/footer</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>regist</servlet-name>
 		<jsp-file>/views/regist.jsp</jsp-file>
@@ -48,7 +51,7 @@
 		<servlet-name>regist</servlet-name>
 		<url-pattern>/regist</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<jsp-file>/views/login.jsp</jsp-file>
@@ -58,7 +61,7 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>mypage</servlet-name>
 		<jsp-file>/views/mypage.jsp</jsp-file>
@@ -68,8 +71,8 @@
 		<servlet-name>mypage</servlet-name>
 		<url-pattern>/mypage</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>board</servlet-name>
 		<jsp-file>/views/board.jsp</jsp-file>
 	</servlet>
@@ -78,8 +81,8 @@
 		<servlet-name>board</servlet-name>
 		<url-pattern>/board</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>booking</servlet-name>
 		<jsp-file>/views/booking.jsp</jsp-file>
 	</servlet>
@@ -88,8 +91,8 @@
 		<servlet-name>booking</servlet-name>
 		<url-pattern>/booking</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>carDetail</servlet-name>
 		<jsp-file>/views/carDetail.jsp</jsp-file>
 	</servlet>
@@ -98,7 +101,7 @@
 		<servlet-name>carDetail</servlet-name>
 		<url-pattern>/carDetail</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>list</servlet-name>
 		<jsp-file>/views/list.jsp</jsp-file>
@@ -108,8 +111,8 @@
 		<servlet-name>list</servlet-name>
 		<url-pattern>/list</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>content</servlet-name>
 		<jsp-file>/views/content.jsp</jsp-file>
 	</servlet>
@@ -118,7 +121,7 @@
 		<servlet-name>content</servlet-name>
 		<url-pattern>/content</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>update</servlet-name>
 		<jsp-file>/views/update.jsp</jsp-file>
@@ -128,8 +131,8 @@
 		<servlet-name>update</servlet-name>
 		<url-pattern>/update</url-pattern>
 	</servlet-mapping>
-	
-		
+
+
 	<servlet>
 		<servlet-name>pay</servlet-name>
 		<jsp-file>/views/pay.jsp</jsp-file>
@@ -139,4 +142,25 @@
 		<servlet-name>pay</servlet-name>
 		<url-pattern>/pay</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>bookingList</servlet-name>
+		<jsp-file>/views/bookingList.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>bookingList</servlet-name>
+		<url-pattern>/bookingList</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>write</servlet-name>
+		<jsp-file>/views/write.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>write</servlet-name>
+		<url-pattern>/write</url-pattern>
+	</servlet-mapping>
+
 </web-app>
