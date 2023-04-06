@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="text" id="pw" name="pw"
+					<td><input type="password" id="pw" name="pw"
 						value="<%=pw != null ? pw : ""%>"
 						<%=pw == null ? "autofocus" : ""%>></td>
 				</tr>

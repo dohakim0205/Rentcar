@@ -29,7 +29,7 @@ public class BoardDao {
 
 		this.conn = DBManager.getConnectionFromMySQL();
 		if (this.conn != null) {
-			String sql = "INSERT INTO Client (board_num, board_type, client_id, publish_date, title, content) VALUES(?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Board (board_num, board_type, client_id, publish_date, title, content) VALUES(?, ?, ?, ?, ?, ?)";
 
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -142,18 +142,19 @@ public class BoardDao {
 
 	// U
 	public void updateBoard(BoardRequestDto boardDto) {
-		Board board = new Board(boardDto);
 
 		this.conn = DBManager.getConnectionFromMySQL();
-		if (this.conn != null && board != null) {
-			String sql = "UPDATE Board SET modify_date=?, title=?, content=? WHERE boardNum=?";
+		if (this.conn != null && boardDto != null) {
+			String sql = "UPDATE Board SET board_type=?, modify_date=?, title=?, content=? WHERE board_num=?";
 
 			try {
 				this.pstmt = conn.prepareStatement(sql);
-				this.pstmt.setTimestamp(1, board.getModifyDate());
-				this.pstmt.setString(2, board.getTitle());
-				this.pstmt.setString(3, board.getContent());
-				this.pstmt.setInt(4, board.getBoardNum());
+				this.pstmt.setString(1, boardDto.getBoardType());
+				System.out.println(boardDto.getModifyDate());
+				this.pstmt.setTimestamp(2, boardDto.getModifyDate());
+				this.pstmt.setString(3, boardDto.getTitle());
+				this.pstmt.setString(4, boardDto.getContent());
+				this.pstmt.setInt(5, boardDto.getBoardNum());
 				this.pstmt.execute();
 
 			} catch (Exception e) {

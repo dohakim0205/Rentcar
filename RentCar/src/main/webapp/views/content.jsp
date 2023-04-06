@@ -1,3 +1,5 @@
+<%@page import="client.Client"%>
+<%@page import="client.controller.ClientDao"%>
 <%@page import="board.Board"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="board.controller.BoardDao"%>
@@ -11,7 +13,6 @@
 <jsp:include page="header"></jsp:include>
 <body>
 	<%
-	request.setCharacterEncoding("UTF-8");
 	int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 	String pDate = (request.getParameter("pDate"));
 	String mDate = (request.getParameter("mDate"));
@@ -39,19 +40,29 @@
 					<td><%=mDate%></td>
 				</tr>
 				<tr>
-					<td colspan="5" class = "title">제목</td>
+					<td colspan="5" class="title">제목</td>
 				</tr>
 				<tr>
-					<td colspan="5" class = "title-text"><%=board.getTitle()%></td>
+					<td colspan="5" class="title-text"><%=board.getTitle()%></td>
 				</tr>
 				<tr>
-					<td colspan="5" class = "title">내용</td>
+					<td colspan="5" class="title">내용</td>
 				</tr>
 				<tr>
-					<td colspan="5" class = "content"><%=board.getContent()%></td>
+					<td colspan="5" class="content"><%=board.getContent()%></td>
 				</tr>
 			</tbody>
 		</table>
+		<%
+		Client client = (Client) session.getAttribute("log");
+		if (client != null && board.getClientId().equals(client.getId())) {
+		%>
+
+		<input type="button" value="수정하기"
+			onclick="location.href = 'modifyBoard?boardNum=<%=board.getBoardNum()%>'">
+		<%
+		}
+		%>
 	</section>
 </body>
 <jsp:include page="footer"></jsp:include>

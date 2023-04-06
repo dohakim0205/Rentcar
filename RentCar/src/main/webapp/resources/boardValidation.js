@@ -1,4 +1,4 @@
-function checkValues(htmlForm) {
+function checkBoardValues(htmlForm) {
 
 	const boardNum = document.getElementById("boardNum").value;
 	const boardType = document.getElementById("boardType").value;

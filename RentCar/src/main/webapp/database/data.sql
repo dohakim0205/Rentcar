@@ -18,7 +18,7 @@ board_num INT PRIMARY KEY,
 board_type VARCHAR(10) NOT NULL,
 client_id VARCHAR(20) NOT NULL,
 publish_date TIMESTAMP DEFAULT current_timestamp,
-modify_date DATE,
+modify_date TIMESTAMP,
 title VARCHAR(100) NOT NULL,
 content VARCHAR(400) NOT NULL,
 FOREIGN KEY(client_id) references Client(client_id)

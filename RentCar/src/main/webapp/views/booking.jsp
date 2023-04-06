@@ -26,6 +26,7 @@
 
 		String bookingDate = request.getParameter("bookingDate");
 		String bookingTime = request.getParameter("bookingTime");
+		System.out.println(bookingTime);
 		String type = request.getParameter("type");
 		String rentDay = request.getParameter("rentDay");
 		String rentHour = request.getParameter("rentHour");
@@ -80,8 +81,7 @@
 			<input type="button" value="다음으로" onclick="checkBookingValues(form)">
 		</form>
 	</section>
-	<script type="text/javascript" src="../resources/bookingValidation.js"
-		charset="UTF-8"></script>
+	<script src="../resources/bookingValidation.js" charset="UTF-8"></script>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>

@@ -33,6 +33,7 @@ public class BookingDao {
 			String sql = "INSERT INTO Booking (booking_num, booking_type, vehicle_id, client_id, booking_approval_time, booking_time, rent_day, payment) VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
 
 			try {
+				this.pstmt = this.conn.prepareStatement(sql);
 				this.pstmt.setInt(1, booking.getBookingNum());
 				this.pstmt.setString(2, booking.getType());
 				this.pstmt.setString(3, booking.getVehicleId());

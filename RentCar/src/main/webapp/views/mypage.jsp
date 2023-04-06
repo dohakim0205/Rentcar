@@ -39,10 +39,13 @@
 				<td class="kind">가입일자</td>
 				<td><%=client.getRegistDate()%></td>
 			</tr>
+			<tr>
+				<td colspan="2"><a href="boardList" class="my-board">내가 쓴 게시글</a></td>
+			</tr>
 		</table>
 		<table>
 			<tr>
-				<td colspan="6"><a href="bookingList">예약 정보</a></td>
+				<td colspan="6">예약 정보</td>
 			</tr>
 			<%
 			for (int i = 0; i < list.size(); i++) {
@@ -52,7 +55,6 @@
 				String time = booking.getBookingTime().toString().substring(0, 16);
 			%>
 			<tr>
-
 				<td>예약번호</td>
 				<td><a
 					href="bookingList?bookingNum=<%=booking.getBookingNum()%>&vehicleName=<%=vehicle.getVehicleName()%>&time=<%=time%>"><%=booking.getBookingNum()%></a></td>
@@ -62,7 +64,6 @@
 				<td>예약 날짜 및 시간</td>
 				<td><a
 					href="bookingList?bookingNum=<%=booking.getBookingNum()%>&vehicleName=<%=vehicle.getVehicleName()%>&time=<%=time%>"><%=time%></a></td>
-
 			</tr>
 			<%
 			}

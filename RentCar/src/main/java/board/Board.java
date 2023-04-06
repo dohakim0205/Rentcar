@@ -40,19 +40,10 @@ public class Board {
 	}
 
 	public Board(BoardRequestDto boardDto) {
-		BoardDao boardDao = BoardDao.getInstance();
 		this.boardNum = boardDto.getBoardNum();
 		this.boardType = boardDto.getBoardType();
 		this.clientId = boardDto.getClientId();
 		this.publishDate = boardDto.getPublishDate();
-		this.title = boardDto.getTitle();
-		this.content = boardDto.getContent();
-	}
-
-	public Board(int boardNum, BoardRequestDto boardDto) {
-		BoardDao boardDao = BoardDao.getInstance();
-		this.boardNum = boardDto.getBoardNum();
-		this.modifyDate = boardDto.getModifyDate();
 		this.title = boardDto.getTitle();
 		this.content = boardDto.getContent();
 	}

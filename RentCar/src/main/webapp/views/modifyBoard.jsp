@@ -1,4 +1,5 @@
 <%@page import="board.controller.BoardDao"%>
+<%@page import="board.Board"%>
 <%@page import="client.Client"%>
 <%@page import="client.controller.ClientDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,28 +13,50 @@
 <body>
 	<%
 	Client client = (Client) session.getAttribute("log");
-	if (client == null) {
-		response.sendRedirect("login");
+	
+	int num = Integer.parseInt(request.getParameter("boardNum"));
+	BoardDao boardDao = BoardDao.getInstance();
+	Board board = boardDao.getBoardByBoardNum(num);
+	
+	String boardNum = num + "";
+	String boardType = board.getBoardType();
+	String title = board.getTitle();
+	String content = board.getContent();
+
+	if (boardNum == null) {
+		boardNum = request.getParameter("boardNum");
+	}
+
+	if (boardType == null) {
+		boardType = request.getParameter("boardType");
+	}
+
+	if (title == null) {
+		title = request.getParameter("title");
+	}
+
+	if (content == null) {
+		content = request.getParameter("content");
+	}
+	
+	board = boardDao.getBoardByBoardNum(Integer.parseInt(boardNum));
+	String pDate = board.getPublishDate().toString().substring(0, 11);
+	String mDate = "";
+	if (board.getModifyDate() == null) {
+		mDate = "없음";
 	}
 
 	else {
-		BoardDao boardDao = BoardDao.getInstance();
-		String boardNum = boardDao.getBoardNumMax() + "";
-
-		if (boardNum == null) {
-			boardNum = request.getParameter("boardNum");
-		}
-
-		String boardType = request.getParameter("boardType");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		mDate = board.getModifyDate().toString().substring(0, 11);
+	}
 	%>
+
 	<section>
-		<h2>게시판</h2>
+		<h2>게시글 수정</h2>
 		<form method="POST" action="../service">
-		<input type = "hidden" name="command" value="board">
-			<table class="board">
-				<tr>
+			<input type="hidden" name="command" value="modifyBoard">
+			<table border="1">
+			<tr>
 					<td>게시글 번호</td>
 					<td><input type="number" id="boardNum" name="boardNum"
 						value="<%=boardNum%>" readonly></td>
@@ -46,8 +69,7 @@
 				<tr>
 					<td>게시글 종류</td>
 					<td><select id="boardType" name="boardType">
-							<option value="문의"
-								<%=boardType == null || boardType.equals("문의") ? "selected" : ""%>>문의</option>
+							<option value="문의" <%=boardType == null || boardType.equals("문의") ? "selected" : ""%>>문의</option>
 							<option value="후기"
 								<%=boardType != null && boardType.equals("후기") ? "selected" : ""%>>후기</option>
 					</select></td>
@@ -63,14 +85,19 @@
 					<td><input class="content" type="text" id="content"
 						name="content" value="<%=content != null ? content : ""%>"></td>
 				</tr>
+				<%
+				
+				%>
+				<tr>
+					<td><%=pDate%></td>
+					<td><%=mDate%></td>
+				</tr>
+				</tbody>
 			</table>
-			<input type="button" value="작성하기" onclick="checkBoardValues(form)">
+			<input type="button" onclick="checkBoardValues(form)" value="수정하기"></input>
 		</form>
 	</section>
 	<script src="../resources/boardValidation.js" charset="UTF-8"></script>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>
-<%
-}
-%>

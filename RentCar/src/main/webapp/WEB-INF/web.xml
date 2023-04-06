@@ -153,7 +153,7 @@
 		<url-pattern>/bookingList</url-pattern>
 	</servlet-mapping>
 	
-		<servlet>
+	<servlet>
 		<servlet-name>write</servlet-name>
 		<jsp-file>/views/write.jsp</jsp-file>
 	</servlet>
@@ -161,6 +161,36 @@
 	<servlet-mapping>
 		<servlet-name>write</servlet-name>
 		<url-pattern>/write</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>boardList</servlet-name>
+		<jsp-file>/views/boardList.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>boardList</servlet-name>
+		<url-pattern>/boardList</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>modifyBoard</servlet-name>
+		<jsp-file>/views/modifyBoard.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>modifyBoard</servlet-name>
+		<url-pattern>/modifyBoard</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>address</servlet-name>
+		<jsp-file>/views/address.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>address</servlet-name>
+		<url-pattern>/address</url-pattern>
 	</servlet-mapping>
 
 </web-app>

@@ -17,6 +17,7 @@ public class BoardRequestDto {
 		this.clientId = clientId;
 		this.publishDate = publishDate;
 		this.modifyDate = modifyDate;
+		System.out.println(this.modifyDate);
 		this.title = title;
 		this.content = content;
 	}

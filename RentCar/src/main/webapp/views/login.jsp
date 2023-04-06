@@ -7,11 +7,17 @@
 </head>
 <jsp:include page="header"></jsp:include>
 <body>
+	<%
+	if (session.getAttribute("log") != null) {
+		response.sendRedirect("mypage");
+	}
 
+	else {
+	%>
 	<section>
 		<h2>로그인</h2>
 		<form method="POST" action="../service">
-		<input type = "hidden" name="command" value="login">
+			<input type="hidden" name="command" value="login">
 			<table>
 				<tr>
 					<td class="kind">아이디</td>
@@ -30,3 +36,6 @@
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>
+<%
+}
+%>

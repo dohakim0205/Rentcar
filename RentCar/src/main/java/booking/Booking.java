@@ -5,19 +5,19 @@ import java.sql.Timestamp;
 import booking.controller.BookingDao;
 
 public class Booking {
-	
+
 	private int bookingNum;
 	private String type;
 	private String vehicleId;
 	private String clientId;
 	private Timestamp approvalTime;
-	private  Timestamp bookingTime;
+	private Timestamp bookingTime;
 	private int rentDay;
 	private int rentHour;
 	private int payment;
-	
 
-	public Booking(int bookingNum, String type, String vehicleId, String clientId, Timestamp approvalTime, Timestamp bookingTime, int rentDay, int rentHour, int payment) {
+	public Booking(int bookingNum, String type, String vehicleId, String clientId, Timestamp approvalTime,
+			Timestamp bookingTime, int rentDay, int rentHour, int payment) {
 		this.bookingNum = bookingNum;
 		this.type = type;
 		this.vehicleId = vehicleId;
@@ -28,7 +28,7 @@ public class Booking {
 		this.rentHour = rentHour;
 		this.payment = payment;
 	}
-	
+
 	public Booking(BookingRequestDto bookingDto) {
 		BookingDao bookingDao = BookingDao.getInstance();
 		this.bookingNum = bookingDao.getBookingNumMax();
@@ -77,5 +77,5 @@ public class Booking {
 	public int getPayment() {
 		return payment;
 	}
-	
+
 }

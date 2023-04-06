@@ -1,4 +1,3 @@
-
 function checkBookingValues(htmlForm) {
 	let url = "booking?";
 
@@ -20,7 +19,6 @@ function checkBookingValues(htmlForm) {
 	const bMonth = parseInt(bookingYMD[1]);
 	const bDay = parseInt(bookingYMD[2]);
 
-
 	if (vehicleId !== "") {
 		url += "&vehicleId=" + vehicleId;
 	}
@@ -39,6 +37,10 @@ function checkBookingValues(htmlForm) {
 
 	if (type === "L" && rentDay !== "") {
 		url += "&rentDay=" + rentDay;
+	}
+
+	if (bYear === year && bMonth === month && bDay > day || bYear === year && bMonth > month || bYear > year) {
+		url += "&bookingDate=" + bookingDate;
 	}
 
 	if (bookingDate == "") {
@@ -70,11 +72,6 @@ function checkBookingValues(htmlForm) {
 		alert('오늘 날짜 이후부터만 예약이 가능합니다');
 		check = false;
 	}
-
-	else if (bYear === year && bMonth === month && bDay > day || bYear === year && bMonth > month || bYear > year) {
-		url += "&bookingDate=" + bookingDate;
-	}
-
 
 	if (check === false) {
 		location.href = url;
