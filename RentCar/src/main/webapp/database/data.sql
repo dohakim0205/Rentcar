@@ -6,10 +6,10 @@ price_per_day INT NOT NULL,
 price_per_hour INT NOT NULL
 );
 
-CREATE TABLE Client (
+CREATE TABLE `Client` (
 client_id VARCHAR(20) PRIMARY KEY,
 client_pw VARCHAR(20) NOT NULL,
-client_name VARCHAR(20) NOTC NULL,
+client_name VARCHAR(20) NOT NULL,
 regist_date TIMESTAMP DEFAULT current_timestamp
 );
 

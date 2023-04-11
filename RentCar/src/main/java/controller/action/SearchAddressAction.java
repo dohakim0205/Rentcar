@@ -14,14 +14,20 @@ public class SearchAddressAction implements Action {
 
 	@Override
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String address = request.getParameter("address");
+		String searchAddress = request.getParameter("searchAddress");
 		
 		VehicleDao vehicleDao = VehicleDao.getInstance();
 		ArrayList<Vehicle> list = vehicleDao.getVehicleAll();
+		ArrayList<Vehicle> searchList = new ArrayList<Vehicle>();
 		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/list").forward(request, response);
+		for(int i = 0; i < list.size(); i ++) {
+			if(list.get(i).getVehicleLocation().contains(searchAddress)) {
+				searchList.add(list.get(i));
+			}
+		}
 		
+		request.setAttribute("list", searchList);
+		request.getRequestDispatcher("/address").forward(request, response);
 	}
 
 }

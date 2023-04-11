@@ -10,22 +10,13 @@
 </head>
 <jsp:include page="header"></jsp:include>
 <body>
+<section>
+	<h3>현위치 검색 결과</h3>
+
 	<%
-	String roadAddress = request.getParameter("roadAddress");
-	System.out.println(roadAddress);
-	VehicleDao vehicleDao = VehicleDao.getInstance();
-	ArrayList<Vehicle> list = vehicleDao.getVehicleAll();
-	ArrayList<Vehicle> userList = new ArrayList<Vehicle>();
-	int count = 0;
-	for (int i = 0; i < list.size(); i++) {
-		Vehicle car = list.get(i);
+	ArrayList<Vehicle> list = (ArrayList<Vehicle>) request.getAttribute("list");
 
-		if (car.getVehicleLocation().contains(roadAddress)) {
-			userList.add(car);
-		}
-	}
-
-	if (count == 0) {
+	if (list == null) {
 	%>
 	<p>검색 결과가 없습니다</p>
 	<%
@@ -33,13 +24,14 @@
 	%>
 	<table>
 		<%
-		for (int i = 0; i < userList.size(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			Vehicle car = list.get(i);
+			int num = Integer.parseInt(car.getVehicleId().substring(3));
 		%>
 		<tr>
 			<td><a
-				href="carDetail?vehicleId=<%=car.getVehicleId()%>&imgSrc=../resources/images/car<%=car.getVehicleId().substring(5, 7)%>.png">
-					<img src="../resources/images/car<%=i + 1%>.png"></img>
+				href="carDetail?vehicleId=<%=car.getVehicleId()%>&imgSrc=../resources/images/car<%=num%>.png">
+					<img src="../resources/images/car<%=num%>.png"></img>
 			</a></td>
 			<td><a href="carDetail?vehicleId=<%=car.getVehicleId()%>"><%=car.getVehicleId()%></a></td>
 			<td><%=car.getVehicleName()%></td>
@@ -53,7 +45,8 @@
 		%>
 	</table>
 
-	<button onclick="list">돌아가기</button>
+	<button onclick="location.href='list'">돌아가기</button>
+	</section>
 </body>
 <jsp:include page="footer"></jsp:include>
 </html>

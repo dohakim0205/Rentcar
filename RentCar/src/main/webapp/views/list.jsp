@@ -17,23 +17,17 @@
 		<%
 		VehicleDao vehicleDao = VehicleDao.getInstance();
 		ArrayList<Vehicle> list = vehicleDao.getVehicleAll();
-		
-		if(request.getAttribute("list") != null)
-			list = (Arraylist<Vehicle>) request.getAttribute("list");
 		%>
 
 		<form method="POST" action="../service">
-			<h3>현위치로 검색</h3>
 			<input type="hidden" name="command" value="address">
-			<input type="text" id="sample4_postcode" placeholder="우편번호">
-			<input type="button" onclick="searchZoneCode()" value="우편번호 찾기"><br> 
-				<input type="text" id="roadAddress" placeholder="도로명주소"> 
-				<input type="text" id="sample4_jibunAddress" placeholder="지번주소"> 
+			<input type="button" onclick="searchZoneCode()" value="주소 찾기"> 
 				<span id="guide" style="color: #999; display: none"></span> 
-				<input type="text" id="sample4_detailAddress" placeholder="상세주소"> 
-				<input	type="text" id="sample4_extraAddress" placeholder="참고항목">
-				<input type="summit" value="검색하기">
+				<input type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소"> 
+				<input type="hidden" id="searchAddress" name ="searchAddress"> 
+				<input type="submit" value="검색하기">
 		</form>
+		
 		<table border="1">
 			<thead>
 				<tr>

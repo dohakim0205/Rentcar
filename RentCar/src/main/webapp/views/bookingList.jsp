@@ -17,6 +17,7 @@
 		BookingDao bookingDao = BookingDao.getInstance();
 		Booking booking = bookingDao.getBookingByNum(bookingNum);
 		%>
+		<table>
 		<td>예약번호</td>
 		<td><%=bookingNum%></td>
 		</tr>
@@ -57,7 +58,8 @@
 			<%
 			}
 			%>
-		
+		</tr>
+		</table>
 	</section>
 </body>
 <jsp:include page="footer"></jsp:include>
